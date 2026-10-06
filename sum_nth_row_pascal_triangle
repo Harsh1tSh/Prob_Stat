@@ -1,0 +1,8 @@
+import math
+n = int(input())
+z = 0
+for i in range(n+1):
+  x = math.log(math.factorial(n)/(math.factorial(i) * math.factorial(n-i)))
+  t = math.exp(x)
+  z += t
+print(z)
