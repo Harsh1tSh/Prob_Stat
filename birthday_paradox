@@ -1,0 +1,15 @@
+
+import math
+
+
+for n in range(20,80):
+
+  x = math.log(math.factorial(365))
+  y = math.log(math.factorial(365-n))
+  z = n * math.log(365)
+  
+  temp = x - (y+z)
+  so = 1-math.exp(temp)
+  print("This is the N " + str(n))
+  print("Chances of sharing are")
+  print(100*so)
