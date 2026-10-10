@@ -1,0 +1,37 @@
+
+import random
+n = 100000
+zet = 0
+for i in range(n):
+  car = random.randint(0,2)
+  choice = random.randint(0,2)
+  x = 0
+  y = 0
+  t = {car,choice}
+  # print("The car is at")
+  # print(car)
+  # print("The choice is :")
+  # print(choice)
+
+  nums = [i for i in range(3) if i not in t]
+
+  # print(nums)
+  host = random.choice(nums)
+  # print("Host chooses")
+  # print(host)
+  if car == choice:
+    zet += 1
+temp = (zet/n) * 100
+print("If i don't change the door i win with probability of : ")
+print(temp)
+print(" ")
+print("If i change my choice i win with probability of : ")
+print(100 - temp)
+
+
+
+Here if there were more door how would the probability shift?????
+
+
+  
+      
