@@ -2,6 +2,7 @@
 import random
 n = 100000
 zet = 0
+lo = 0
 for i in range(n):
   car = random.randint(0,2)
   choice = random.randint(0,2)
@@ -21,17 +22,25 @@ for i in range(n):
   # print(host)
   if car == choice:
     zet += 1
+
+  s = [i for i in range(3) if i != choice and i != host]
+  sc = random.choice(s)
+
+  if sc == car:
+    lo += 1
+  
 temp = (zet/n) * 100
+switch = (lo/n) * 100
 print("If i don't change the door i win with probability of : ")
 print(temp)
 print(" ")
 print("If i change my choice i win with probability of : ")
-print(100 - temp)
+print(switch)
 
 
-
-Here if there were more door how would the probability shift?????
-
+Now to answer the question what to do if i have more than 3 doors
+the thing is it won't directly follow the same startegy like the one using which we are doing the above problem
+we will have to make a choosing strategy as well.
 
   
       
