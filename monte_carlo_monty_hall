@@ -41,6 +41,14 @@ print(switch)
 Now to answer the question what to do if i have more than 3 doors
 the thing is it won't directly follow the same startegy like the one using which we are doing the above problem
 we will have to make a choosing strategy as well.
+It will completely upto host how he chooses
+
+
+Also like when said the remainng door has mmore chances to have the car it directly corresponds to the alternative having the combined chances ( proabilities of other doors )
+
+Just like chatgpt once said:
+The host doesn't open the remaining door. The host opens all but one of the other doors, leaving exactly two closed doors: your original choice and one alternative.
+Giving more option to the other remainig door.
 
   
       
