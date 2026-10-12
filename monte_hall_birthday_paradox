@@ -1,0 +1,24 @@
+import math
+import random
+
+c = 0
+n = 100000
+# for n in range(20,80):
+for i in range(n):
+  t = []
+  for i in range(1,24):
+    t.append(random.randint(1,365))
+  # print(t)
+  if len(t) != len(set(t)):
+    c += 1
+temp = (c/n) * 100
+print(temp)
+# x = math.log(math.factorial(365))
+# y = math.log(math.factorial(365-23))
+# z = 23 * math.log(365)
+
+# temp = x - (y+z)
+# so = 1-math.exp(temp)
+
+# print("Chances of sharing are")
+# print(100*so)
