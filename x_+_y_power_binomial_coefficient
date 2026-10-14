@@ -1,0 +1,14 @@
+import math
+
+a = 'x'
+b = 'y'
+n = int(input())
+t = ''
+x = ''
+print(f'x+y ^ {n} is')
+for i in range(n+1):
+  coefficient = math.factorial(n)//(math.factorial(i)*math.factorial(n-i))
+  t = str(coefficient)
+  x += t + f'.x^{i} y^{n-i} + '
+y = len(x) - 3
+print(x[:y])
