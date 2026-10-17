@@ -1,0 +1,76 @@
+
+import random
+
+print("How many components are there?")
+n = int(input())
+
+print("How many simulations do you want?")
+t = int(input())
+
+monte = 0
+sha = 0
+
+for i in range(t):
+    p = random.uniform(0.05, 0.06)
+
+    survival = (1 - p) ** n
+    failure = 1 - survival
+
+    monte += failure * 100
+    sha += survival * 100
+
+print("Average probability of failure:", monte / t, "%")
+print("Average probability of survival:", sha / t, "%")
+print("Total:", monte / t + sha / t, "%")
+
+
+
+
+
+
+
+Now a better looking one
+
+import random
+
+print("How many components are there?")
+n = int(input())
+
+print("How many simulations do you want?")
+t = int(input())
+
+monte = 0
+sha = 0
+
+for i in range(t):
+    p = random.uniform(0.05, 0.06)
+
+    survival = (1 - p) ** n
+    failure = 1 - survival
+
+    monte += failure * 100
+    sha += survival * 100
+
+print("Average probability of failure:", monte / t, "%")
+print("Average probability of survival:", sha / t, "%")
+print("Total:", monte / t + sha / t, "%")
+
+
+
+Also what a beautiful result
+How many components are there?
+100
+How many simulations do you want?
+1000000
+Average probability of failure: 99.634518889546 %
+Average probability of survival: 0.36548111044960163 %
+Total: 99.99999999999561 %
+
+
+
+
+
+
+
+
+
