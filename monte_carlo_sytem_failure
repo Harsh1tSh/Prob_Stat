@@ -69,6 +69,36 @@ Total: 99.99999999999561 %
 
 
 
+Chatgpt suggested this
+
+import random
+
+n = int(input("How many components are there? "))
+t = int(input("How many simulations? "))
+
+failed_systems = 0
+surviving_systems = 0
+
+for _ in range(t):
+    system_failed = False
+
+    for _ in range(n):
+        p = random.uniform(0.05, 0.06)
+
+        if random.random() < p:
+            system_failed = True
+            break
+
+    if system_failed:
+        failed_systems += 1
+    else:
+        surviving_systems += 1
+
+print("Estimated system failure probability:",
+      failed_systems / t * 100, "%")
+
+print("Estimated system survival probability:",
+      surviving_systems / t * 100, "%")
 
 
 
