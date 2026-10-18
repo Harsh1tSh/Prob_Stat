@@ -1,0 +1,9 @@
+import random
+n = 100000
+t = 0
+for i in range(n):
+  x = random.randint(1,6)
+  if x == 6:
+    t += 1
+print((t/n) * 100)
+  
