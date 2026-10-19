@@ -45,6 +45,27 @@ else:
 
 
 print("\nRule of thumb for a normal distribution:")
+
+
+
+
+x = np.linspace(mean - 4*sd, mean + 4*sd, 800)
+y = norm.pdf(x, mean, sd)
+
+plt.figure(figsize=(10, 5.5))
+plt.plot(x, y, label='Normal PDF')
+plt.fill_between(x, y, where=(x >= lower) & (x <= upper), alpha=0.25,
+                 label=f'Within 1 SD: {lower:.1f}–{upper:.1f} cm')
+plt.axvline(mean, linestyle='--', label=f'Mean = {mean} cm')
+plt.axvline(lower, linestyle=':', color='gray')
+plt.axvline(upper, linestyle=':', color='gray')
+plt.axvline(my_height, linestyle='-.', label=f'Height = {my_height} cm (z={z:.2f})')
+plt.xlabel('Height (cm)')
+plt.ylabel('Probability density')
+plt.title('Height distribution: normal-model illustration')
+plt.legend()
+plt.grid(alpha=0.2)
+plt.show()
 print("  |z| <= 1: within 1 SD (about 68% of values lie in this central range)")
 print("  1 < |z| <= 2: between 1 and 2 SD from the mean")
 print("  2 < |z| <= 3: between 2 and 3 SD from the mean")
