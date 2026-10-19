@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm
 
+
 mean = 165.3
 sd = 6.53
 
@@ -12,35 +13,39 @@ my_height = 179
 lower = mean - sd
 upper = mean + sd
 
+
 z = (my_height - mean) / sd
 percentile = norm.cdf(z) * 100
 
-print(f'Mean height: {mean:.1f} cm')
-print(f'Standard deviation: {sd:.2f} cm')
-print(f'One-SD range: {lower:.2f} to {upper:.2f} cm')
-print(f'Your example height: {my_height:.1f} cm')
-print(f'Z-score: {z:.2f}')
-print(f'Approximate percentile under this model: {percentile:.1f}th')
-if lower <= my_height <= upper:
-    print('This height is within one standard deviation of the mean.')
+print(f"Mean height: {mean:.1f} cm")
+print(f"Standard deviation: {sd:.2f} cm")
+print(f"One-SD range: {lower:.2f} to {upper:.2f} cm")
+print(f"Your height: {my_height:.1f} cm")
+print(f"Z-score: {z:.2f}")
+print(f"Approximate percentile under this normal model: {percentile:.2f}th")
+
+
+abs_z = abs(z)
+if abs_z <= 1:
+    band = "within 1 standard deviation of the mean"
+elif abs_z <= 2:
+    band = "between 1 and 2 standard deviations from the mean"
+elif abs_z <= 3:
+    band = "between 2 and 3 standard deviations from the mean"
 else:
-    print('This height is outside one standard deviation of the mean.')
+    band = "more than 3 standard deviations from the mean"
+
+direction = "above" if z > 0 else "below" if z < 0 else "exactly at"
+print(f"Interpretation: your height is {band} and {direction} the mean.")
+
+if lower <= my_height <= upper:
+    print("It is within the mean ± 1 SD range.")
+else:
+    print("It is outside the mean ± 1 SD range.")
 
 
-x = np.linspace(mean - 4*sd, mean + 4*sd, 800)
-y = norm.pdf(x, mean, sd)
-
-plt.figure(figsize=(10, 5.5))
-plt.plot(x, y, label='Normal PDF')
-plt.fill_between(x, y, where=(x >= lower) & (x <= upper), alpha=0.25,
-                 label=f'Within 1 SD: {lower:.1f}–{upper:.1f} cm')
-plt.axvline(mean, linestyle='--', label=f'Mean = {mean} cm')
-plt.axvline(lower, linestyle=':', color='gray')
-plt.axvline(upper, linestyle=':', color='gray')
-plt.axvline(my_height, linestyle='-.', label=f'Height = {my_height} cm (z={z:.2f})')
-plt.xlabel('Height (cm)')
-plt.ylabel('Probability density')
-plt.title('Height distribution: normal-model illustration')
-plt.legend()
-plt.grid(alpha=0.2)
-plt.show()
+print("\nRule of thumb for a normal distribution:")
+print("  |z| <= 1: within 1 SD (about 68% of values lie in this central range)")
+print("  1 < |z| <= 2: between 1 and 2 SD from the mean")
+print("  2 < |z| <= 3: between 2 and 3 SD from the mean")
+print("  |z| > 3: more than 3 SD from the mean (uncommon under a normal model)")
