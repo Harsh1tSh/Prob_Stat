@@ -1,0 +1,46 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+mean = 165.3
+sd = 6.53
+
+
+my_height = 179
+
+
+lower = mean - sd
+upper = mean + sd
+
+z = (my_height - mean) / sd
+percentile = norm.cdf(z) * 100
+
+print(f'Mean height: {mean:.1f} cm')
+print(f'Standard deviation: {sd:.2f} cm')
+print(f'One-SD range: {lower:.2f} to {upper:.2f} cm')
+print(f'Your example height: {my_height:.1f} cm')
+print(f'Z-score: {z:.2f}')
+print(f'Approximate percentile under this model: {percentile:.1f}th')
+if lower <= my_height <= upper:
+    print('This height is within one standard deviation of the mean.')
+else:
+    print('This height is outside one standard deviation of the mean.')
+
+
+x = np.linspace(mean - 4*sd, mean + 4*sd, 800)
+y = norm.pdf(x, mean, sd)
+
+plt.figure(figsize=(10, 5.5))
+plt.plot(x, y, label='Normal PDF')
+plt.fill_between(x, y, where=(x >= lower) & (x <= upper), alpha=0.25,
+                 label=f'Within 1 SD: {lower:.1f}–{upper:.1f} cm')
+plt.axvline(mean, linestyle='--', label=f'Mean = {mean} cm')
+plt.axvline(lower, linestyle=':', color='gray')
+plt.axvline(upper, linestyle=':', color='gray')
+plt.axvline(my_height, linestyle='-.', label=f'Height = {my_height} cm (z={z:.2f})')
+plt.xlabel('Height (cm)')
+plt.ylabel('Probability density')
+plt.title('Height distribution: normal-model illustration')
+plt.legend()
+plt.grid(alpha=0.2)
+plt.show()
